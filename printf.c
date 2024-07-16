@@ -11,9 +11,8 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i = 0, count = 0;
+	int i = 0, count = 0, (*func)(va_list);
 	char especificador;
-	int (*func)(va_list);
 
 	if (format == NULL)
 		return (-1);
@@ -24,20 +23,23 @@ int _printf(const char *format, ...)
 		{
 			i++;
 			especificador = format[i];
-			func = choose_one(especificador);
-
-			if (func != NULL)
-				count += func(args);
-			else
+			if (especificador == '%')
 			{
 				write(1, "%", 1);
 				count++;
 			}
-		}
-		else if (format[i] == '%' && format[i + 1] == '%')
-			write(1, "%", 1);
-		else if (format[i] == '%' && format[i + 1] == '\0')
-		{
+			else
+			{
+				func = choose_one(especificador);
+				if (func != NULL)
+					count += func(args);
+				else
+				{
+					write(1, "%", 1);
+					write(1, &especificador, 1);
+					count += 2;
+				}
+			}
 		}
 		else
 		{
