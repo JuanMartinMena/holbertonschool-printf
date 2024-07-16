@@ -33,9 +33,10 @@ int _printf(const char *format, ...)
 			}
 			if (opciones[j].especificador == '\0')
 			{
-				write(1, &format[i - 1], 1);
+				write(1, "%", 1);
+				count++;
 				write(1, &format[i], 1);
-				count += 2;
+				count++;
 			}
 		}
 		else
