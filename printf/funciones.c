@@ -20,7 +20,7 @@ int print_string(va_list args)
 	{
 		largo++;
 	}
-	return write(1, str, len);
+	return write(1, str, largo);
 }
 int print_percent(va_list args)
 {
