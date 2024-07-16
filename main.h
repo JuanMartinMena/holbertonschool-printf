@@ -19,6 +19,7 @@ int _printf(const char *format, ...);
 int print_char(va_list args);
 int print_string(va_list args);
 int print_percent(va_list args);
+int percent_null(char especificador, int *count);
 
 int (*choose_one(char especificador))(va_list);
 

@@ -11,7 +11,6 @@ int (*choose_one(char especificador))(va_list)
 	form opciones[] = {
 		{'c', print_char},
 		{'s', print_string},
-		{'%', print_percent},
 		{'\0', NULL}
 	};
 
