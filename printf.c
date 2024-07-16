@@ -24,7 +24,10 @@ int _printf(const char *format, ...)
 			i++;
 			especificador = format[i];
 			if (especificador == '%')
+			{
+				write(1, "%", 1);
 				count++;
+			}
 			else
 			{
 				func = choose_one(especificador);
