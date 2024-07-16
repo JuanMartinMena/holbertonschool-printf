@@ -1,25 +1,28 @@
 #include "main.h"
 #include <stddef.h>
 #include <unistd.h>
-
+/**
+ * _printf - funcion que printea los argumentos de tipo string/char
+ *
+ * @format: argumentos
+ *
+ * Return: retorna un int con la cantidad de veces que se imprime un caracter
+ */
 int _printf(const char *format, ...)
 {
 	va_list args;
 	int i = 0, count = 0, j;
-	struct formato opciones[] = {
-		{'c', print_char},
-		{'s', print_string},
-		{'%', print_percent},
-		{'\0', NULL}
-	};
+
 	if (format == NULL)
-		return (count);
+		return (-1);
 	va_start(args, format);
 	while (format != NULL && format[i] != '\0')
 	{
 		if (format[i] == '%' && format[i + 1])
 		{
 			i++;
+			if (format[i] == '\0')
+				return (-1);
 			for (j = 0; opciones[j].especificador; j++)
 			{
 				if (format[i] == opciones[j].especificador)
