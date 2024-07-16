@@ -11,33 +11,33 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i = 0, count = 0, j;
+	int i = 0, count = 0;
+	char especificador;
+	int (*func)(va_list);
 
 	if (format == NULL)
 		return (-1);
 	va_start(args, format);
 	while (format != NULL && format[i] != '\0')
 	{
-		if (format[i] == '%' && format[i + 1])
+		if (format[i] == '%' && format[i + 1] != '\0')
 		{
 			i++;
-			if (format[i] == '\0')
-				return (-1);
-			for (j = 0; opciones[j].especificador; j++)
-			{
-				if (format[i] == opciones[j].especificador)
-				{
-					count += opciones[j].func(args);
-					break;
-				}
-			}
-			if (opciones[j].especificador == '\0')
+			especificador = format[i];
+			func = choose_one(especificador);
+
+			if (func != NULL)
+				count += func(args);
+			else
 			{
 				write(1, "%", 1);
 				count++;
-				write(1, &format[i], 1);
-				count++;
 			}
+		}
+		else if (format[i] == '%' && format[i + 1] == '%')
+			write(1, "%", 1);
+		else if (format[i] == '%' && format[i + 1] == '\0')
+		{
 		}
 		else
 		{

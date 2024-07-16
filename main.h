@@ -9,17 +9,17 @@
  * @especificador: caracter propio de cada funcion
  * @func: puntero a funcion de tipo va_list que devuelve un entero
  */
-struct formato
+typedef struct formato
 {
 	char especificador;
 	int (*func)(va_list);
-};
+} form;
 
 int _printf(const char *format, ...);
 int print_char(va_list args);
 int print_string(va_list args);
 int print_percent(va_list args);
 
-extern struct formato opciones[];
+int (*choose_one(char especificador))(va_list);
 
 #endif
