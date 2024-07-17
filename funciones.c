@@ -47,3 +47,32 @@ int print_percent(va_list args)
 	(void)args;
 	return (write(1, "%", 1));
 }
+/**
+ * print_int - printea un entero
+ *
+ * @args: son los argumentos que pasan de tipo int
+ *
+ * Return: largo del entero y printearlo
+ */
+int print_int(va_list args)
+{
+	int num = va_arg(args, int);
+	int count = 0, div = 1;
+	char digit;
+
+	if (num < 0)
+	{
+		count += write(1, "-", 1);
+		num = -num;
+	}
+	while (num / div >= 10)
+		div *= 10;
+	while (div > 0)
+	{
+		digit = '0' + (num / div);
+		count += write(1, &digit, 1);
+		num %= div;
+		div /= 10;
+	}
+	return (count);
+}
