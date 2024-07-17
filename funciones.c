@@ -60,6 +60,11 @@ int print_int(va_list args)
 	int count = 0, div = 1;
 	char digit;
 
+	if (num == -2147483648)
+	{
+		count += write(1, "-2147483648", 11);
+		return (count);
+	}
 	if (num < 0)
 	{
 		count += write(1, "-", 1);

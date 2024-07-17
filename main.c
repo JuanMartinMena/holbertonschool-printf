@@ -12,6 +12,7 @@ int main(void)
 	char *str2 = "";
 	int b = 123456789;
 	int c = -123456789;
+	int d = -2147483648;
 
 	_printf("probando.-.-.-.-.-. sin equipo be likeee\n");
 	_printf("%");
@@ -25,5 +26,8 @@ int main(void)
 	_printf("puedo contar %i\n", b);
 	_printf("puedo contar negativos %d\n", c);
 	_printf("puedo contar negativos %i\n", c);
+	_printf("nadie esta por debajo de mi! Soy %d\n", d);
+	_printf("nadie esta por debajo de mi! Soy %i\n", d);
+
 	return (0);
 }
