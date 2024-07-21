@@ -12,6 +12,12 @@ The **functionalities** that are **implemented** on the function **"_printf"** a
 ## Objectives Of The Function
 - **Returns:** the **number** of **characters printed** (**excluding** the **null byte** used to end output to **strings**)
 - **handle** the following **conversion specifiers**: **c, s, i, d**
+## Use of each function
+- **main.h** ->  File header, this is where all the prototypes of each function/structure are defined, so that they can be used in other files.
+- **funciones.c** -> File containing helper functions, here there are functions that are called on the file **_printf**.
+- **opciones.c** -> File with selector function, this file is called to be able to select the appropriate specifier.
+- **printf.c** -> Executor file, this file is the one that calls the functions of the other files to be able to print what is requested.
+
 ## **Function logic**
 ![KKKKKKKKKKK](https://github.com/user-attachments/assets/0af55c55-7e58-4136-8154-86bdf7bad26d)
 
